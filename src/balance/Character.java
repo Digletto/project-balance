@@ -1,5 +1,5 @@
 package balance;
 
-public class Character {
+public class Character implements Actor {
 
 }
