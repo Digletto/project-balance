@@ -2,13 +2,9 @@ package utility;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class ConfigReader {
 	Scanner cfgScanner;
@@ -31,6 +27,7 @@ public class ConfigReader {
 				types.add((currentLine.substring(1)));
 			}
 		}
+		cfgScanner.close();
 		return arrayListToArray(types);
 	}
 
@@ -49,6 +46,7 @@ public class ConfigReader {
 				}
 			}
 		}
+		cfgScanner.close();
 		return stats.toArray(new String[stats.size()]);
 	}
 
