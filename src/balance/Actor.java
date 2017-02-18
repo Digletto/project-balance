@@ -18,7 +18,7 @@ public class Actor {
 	 * Creates the stat if it doesn't exists and puts it to 0
 	 * 
 	 * @param statName
-	 * @return true if the stat didn't already exist
+	 * @return true if the stat didn't exist and was added
 	 */
 	public Boolean addStat(String statName) {
 		return putIfAbsent(statName, 0);

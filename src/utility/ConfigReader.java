@@ -10,6 +10,7 @@ public class ConfigReader {
 	Scanner cfgScanner;
 	String cfgPath;
 	File cfgFile;
+	ArrayUtility arrayUtil = new ArrayUtility();
 
 	public ConfigReader(String cfgPath) {
 		this.cfgPath = cfgPath;
@@ -17,9 +18,8 @@ public class ConfigReader {
 	}
 
 	public String[] loadActorTypes() {
-		restartCfgScanner();
-
 		ArrayList<String> types = new ArrayList<String>();
+		restartCfgScanner();
 		String currentLine;
 		while (cfgScanner.hasNextLine()) {
 			currentLine = cfgScanner.nextLine();
@@ -28,13 +28,12 @@ public class ConfigReader {
 			}
 		}
 		cfgScanner.close();
-		return arrayListToArray(types);
+		return arrayUtil.arrayListToArray(types);
 	}
 
 	public String[] loadStats(String type) {
 		restartCfgScanner();
-
-		List<String> stats = new ArrayList<String>();
+		ArrayList<String> stats = new ArrayList<String>();
 		String currentLine;
 		while (cfgScanner.hasNextLine()) {
 			currentLine = cfgScanner.nextLine();
@@ -47,11 +46,7 @@ public class ConfigReader {
 			}
 		}
 		cfgScanner.close();
-		return stats.toArray(new String[stats.size()]);
-	}
-
-	public String[] arrayListToArray(ArrayList<String> types) {
-		return types.toArray(new String[types.size()]);
+		return arrayUtil.arrayListToArray(stats);
 	}
 
 	private void restartCfgScanner() {
