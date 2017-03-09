@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//TODO refaktorisera dem shitz
 public class ConfigReader {
 	Scanner cfgScanner;
 	String cfgPath;
