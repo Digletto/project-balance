@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//TODO refaktorisera dem shitz
 public class ConfigReader {
 	Scanner cfgScanner;
 	String cfgPath;
@@ -36,16 +37,19 @@ public class ConfigReader {
 		String currentLine;
 		while (cfgScanner.hasNextLine()) {
 			currentLine = cfgScanner.nextLine();
-			if (currentLine.startsWith("@" + type)) {
-				currentLine = cfgScanner.nextLine();
-				while (!currentLine.contains(">@")) {
-					stats.add(currentLine);
-					currentLine = cfgScanner.nextLine();
-				}
-			}
+			if (currentLine.startsWith("@" + type))
+				addStatList(stats, currentLine);
 		}
 		cfgScanner.close();
 		return arrayUtil.arrayListToArray(stats);
+	}
+
+	private void addStatList(ArrayList<String> stats, String currentLine) {
+		currentLine = cfgScanner.nextLine();
+		while (!currentLine.contains(">@")) {
+			stats.add(currentLine);
+			currentLine = cfgScanner.nextLine();
+		}
 	}
 
 	private void restartCfgScanner() {
