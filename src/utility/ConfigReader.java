@@ -30,16 +30,26 @@ public class ConfigReader {
 		return arrayUtil.arrayListToArray(types);
 	}
 
+	/**
+	 * Loads and returns the different stats assigned to a certain actor type
+	 * 
+	 * @param type
+	 *            the type of actor to load the stats of
+	 * @return an Array of Strings containing all stat-names belonging to the
+	 *         actor type
+	 */
 	public String[] loadStats(String type) {
 		restartCfgScanner();
 		ArrayList<String> stats = new ArrayList<String>();
 		String currentLine;
+
 		while (cfgScanner.hasNextLine()) {
 			currentLine = cfgScanner.nextLine();
 			if (currentLine.startsWith("@" + type))
 				addStatList(stats, currentLine);
 		}
 		cfgScanner.close();
+
 		return arrayUtil.arrayListToArray(stats);
 	}
 
